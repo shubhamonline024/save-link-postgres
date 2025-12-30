@@ -19,10 +19,11 @@ const app = express();
 
 app.use(
   cors({
-    origin:
-      process.env.ENV === "local"
-        ? "http://localhost:5173"
-        : process.env.FRONTEND_URL,
+    // origin:
+    //   process.env.ENV === "local"
+    //     ? "http://localhost:5173"
+    //     : process.env.FRONTEND_URL,
+    origin: "*",
     methods: ["GET", "POST", "PATCH", "DELETE"],
     headers: ["Content-Type", "Authorization"],
   })
