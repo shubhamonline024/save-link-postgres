@@ -65,14 +65,11 @@ const Login = () => {
 
   return (
     <div className="flex items-center justify-center">
-      <div className="flex items-center justify-center border border-1 border-amber-950 w-1/2 h-screen">
-        {" "}
-        text
-      </div>
-      <div className="flex items-center justify-center border border-1 border-amber-950 w-1/2 h-screen">
+      <div className="flex items-center justify-center w-2/5 h-screen bg-[oklch(0.795_0.184_86.047)]"></div>
+      <div className="flex items-center justify-center w-3/5 h-screen">
         <div className="mx-auto flex w-full flex-col justify-center gap-6 sm:w-[350px] ">
           <div className="grid gap-6">
-            <CardHeader className="text-center">
+            <CardHeader className="text-center bg-background text-foreground">
               <CardTitle className="text-xl">
                 {loginMode ? "Login" : "Signup"}
               </CardTitle>
@@ -103,7 +100,7 @@ const Login = () => {
                 </Field>
 
                 <Field>
-                  <Button variant="outline" onClick={handleSubmit}>
+                  <Button variant="default" onClick={handleSubmit}>
                     Submit
                   </Button>
                 </Field>
@@ -113,14 +110,15 @@ const Login = () => {
                 {loginMode
                   ? "Create new account? "
                   : "Already have an account? "}
-                <button
-                  variant="link"
+
+                <a
+                  href="#"
                   onClick={() => {
                     setLoginMode((prev) => !prev);
                   }}
                 >
                   {loginMode ? "Signup" : "Login"}
-                </button>
+                </a>
               </div>
             </CardContent>
           </div>
