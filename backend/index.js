@@ -213,10 +213,10 @@ app
   .post(async (req, res) => {
     try {
       const id = req.body.id;
-      const url = req.body.url;
+      const urls = req.body.urls;
 
       // Validation
-      if (!id || !url) {
+      if (!id || !urls) {
         return res.status(400).json({
           status: false,
           message: "User ID and URL are required",
@@ -230,7 +230,9 @@ app
         });
       }
 
-      if (!validateUrl(url)) {
+      const hasInvalidUrl = urls.some((url) => !validateUrl(url));
+
+      if (hasInvalidUrl) {
         return res.status(400).json({
           status: false,
           message: "Invalid URL format",
@@ -238,14 +240,14 @@ app
       }
 
       const results = await client.query(
-        `INSERT INTO urls (user_id, url) VALUES ($1, $2) RETURNING id,url, created_at`,
-        [id, url]
+        `INSERT INTO urls (user_id, url) SELECT $1, unnest($2::text[]) RETURNING id,url, created_at`,
+        [id, urls]
       );
 
       return res.status(200).json({
         status: true,
-        message: `successfully inserted data`,
-        data: results.rows[0],
+        message: `successfully inserted data ${results.rowCount} records`,
+        data: results.rows,
       });
     } catch (e) {
       return res
