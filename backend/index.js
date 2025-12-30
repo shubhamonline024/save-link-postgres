@@ -28,6 +28,8 @@ app.use(
     headers: ["Content-Type", "Authorization"],
   })
 );
+
+app.options("*", cors());
 app.use(helmet());
 app.use(express.json());
 
