@@ -244,7 +244,7 @@ app
         [id, urls]
       );
 
-      return res.status(200).json({
+      return res.status(201).json({
         status: true,
         message: `successfully inserted data ${results.rowCount} records`,
         data: results.rows,
