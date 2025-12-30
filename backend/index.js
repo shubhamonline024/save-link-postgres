@@ -195,7 +195,7 @@ app
       }
 
       const results = await client.query(
-        `SELECT id, url, created_at, updated_at FROM urls where user_id = $1 and is_active=TRUE`,
+        `SELECT id, url, created_at, updated_at FROM urls where user_id = $1 and is_active=TRUE ORDER BY updated_at DESC`,
         [id]
       );
 
