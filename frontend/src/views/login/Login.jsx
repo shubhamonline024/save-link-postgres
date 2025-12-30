@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../axios-private/AxiosPrivate";
+import api from "../../axios-private/AxiosPrivate";
 import {
   Card,
   CardContent,
@@ -18,7 +18,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
-import { useAuth } from "../auth/AuthProvider";
+import { useAuth } from "../../auth/AuthProvider";
 
 const Login = () => {
   const [loginMode, setLoginMode] = useState(true);

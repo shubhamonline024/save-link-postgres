@@ -306,7 +306,8 @@ app
   .delete(async (req, res) => {
     try {
       const { url_id, id } = req.body;
-
+      console.log("a57", url_id);
+      console.log("a58", id);
       // Validation
       if (!url_id) {
         return res.status(400).json({
@@ -329,7 +330,7 @@ app
           message: "Invalid user ID format",
         });
       }
-
+      console.log("a57");
       const results = await client.query(
         `UPDATE urls SET is_active = FALSE, updated_at = CURRENT_TIMESTAMP WHERE id = $1 and user_id=$2 and is_active=TRUE RETURNING url`,
         [url_id, id]
@@ -341,6 +342,7 @@ app
         data: results.rows[0],
       });
     } catch (e) {
+      console.log("a41", e);
       return res
         .status(500)
         .json({ status: false, message: "error while deleting data" });

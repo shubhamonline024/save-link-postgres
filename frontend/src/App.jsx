@@ -1,5 +1,5 @@
-import Login from "./views/Login";
-import Home from "./views/Home";
+import Login from "./views/login/Login";
+import Home from "./views/home/Home";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProtectedRoutes from "./protected-routes/ProtectedRoutes";
